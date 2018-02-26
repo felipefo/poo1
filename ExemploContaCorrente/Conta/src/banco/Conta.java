@@ -31,6 +31,7 @@ class Conta {
         return true;        
     }    
     public void imprimirSaldo(){        
-        System.out.println("Seu saldo é :" + this.saldo);           
+         System.out.println("Prezado, "+ nomeCliente);
+      System.out.println("Seu saldo atual é: R$ "+ saldo);          
     }    
 }
