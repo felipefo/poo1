@@ -1,6 +1,8 @@
 
 package jogo;
 
+import jogo.terceirasolucao.*;
+
 
 public class Jogo {
 

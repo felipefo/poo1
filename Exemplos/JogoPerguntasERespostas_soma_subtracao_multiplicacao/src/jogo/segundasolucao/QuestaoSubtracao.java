@@ -1,5 +1,5 @@
 
-package jogo;
+package jogo.segundasolucao;
 
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JOptionPane;

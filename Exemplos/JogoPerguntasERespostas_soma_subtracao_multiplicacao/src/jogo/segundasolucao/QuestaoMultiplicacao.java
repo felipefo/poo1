@@ -1,10 +1,9 @@
 
-package jogo;
+package jogo.segundasolucao;
 
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JOptionPane;
-public class QuestaoMultiplicacao {  
-    
+public class QuestaoMultiplicacao {      
     int pontos;
     int operador1;
     int operador2;
@@ -24,8 +23,7 @@ public class QuestaoMultiplicacao {
         String resposta = JOptionPane.showInputDialog("Quanto é " + 
         this.operador1 + " * " + this.operador2 );
         this.respostaEmInteiro = Integer.parseInt(resposta);        
-    }
-    
+    }    
     public void exibirResultado(){
         if(this.verificarResposta())
           JOptionPane.showMessageDialog(null,"Você acertou!");

@@ -1,9 +1,9 @@
 
-package jogo;
+package jogo.primeirasolucao;
 
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JOptionPane;
-//essa classe tem e mais dificil de testar.
+//essa classe eh mais dificil de testar.
 public class Questao {  
     int pontos=0;
     //
@@ -27,14 +27,14 @@ public class Questao {
             if(respostaEmInteiro == operador1 + operador2){
                 resultadoCorrecao = true;
             }
-        }else if (this.tipoQuestao == 2){
+        }else if (this.tipoQuestao == 2){//subtracao
             resposta = JOptionPane.showInputDialog("Quanto é " + 
             operador1 + " - " + operador2 );    
             int respostaEmInteiro = Integer.parseInt(resposta);                        
             if(respostaEmInteiro == operador1 + operador2){
                 resultadoCorrecao = true;
             }
-        }else if (this.tipoQuestao == 3){
+        }else if (this.tipoQuestao == 3){//multiplicacao
             resposta = JOptionPane.showInputDialog("Quanto é " + 
             operador1 + " * " + operador2 );                            
             int respostaEmInteiro = Integer.parseInt(resposta);                        
