@@ -1,5 +1,5 @@
 
-package jogo.terceirasolucao;
+package jogo.pontuacao;
 
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JOptionPane;
@@ -10,7 +10,7 @@ public abstract class Questao {
     int operador2;
     int resposta;
     
-    public Questao(){        
+    public Questao(){    
         this.operador1 = ThreadLocalRandom.current().nextInt(0,100);
         this.operador2 = ThreadLocalRandom.current().nextInt(0,20);   
     }   
