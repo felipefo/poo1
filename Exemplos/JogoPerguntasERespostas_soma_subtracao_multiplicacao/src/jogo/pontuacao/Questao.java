@@ -10,7 +10,8 @@ public abstract class Questao {
     int operador2;
     int resposta;
     
-    public Questao(){    
+    public Questao(){ 
+        
         this.operador1 = ThreadLocalRandom.current().nextInt(0,100);
         this.operador2 = ThreadLocalRandom.current().nextInt(0,20);   
     }   
@@ -21,4 +22,15 @@ public abstract class Questao {
         else 
           JOptionPane.showMessageDialog(null,"Você errou!");
     }
+     
+    public String toString(){                
+        String resultado = this.verificarResposta() == true ? "acertou" : "errou";
+        String informacoes;
+        informacoes = "Pontos:" + this.pontos  
+                + " operador 1:" + this.operador1 
+                + " operador 2:" + this.operador2
+                + " resposta:" + this.resposta
+                + " resultado:" + resultado;        
+        return informacoes;        
+    }     
 }
