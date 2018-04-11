@@ -10,7 +10,6 @@ import solucao2.ItemPedido;
 public class LanchoneteSolucao2 {
 
     public static void main(String[] args) {
-        // TODO code application logic here
         
         ProdutosCadastrados pCastrados = new ProdutosCadastrados();
         
