@@ -1,6 +1,9 @@
 
 package cadastrousuario;
 
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -10,6 +13,7 @@ public class CadastroUsuario {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // TODO code application logic here        
        String opcao = JOptionPane.showInputDialog("Escolha a opção"
                 + "\n(1)criar usuário"
                 + "\n(2)listar usuário JOptionPane"
