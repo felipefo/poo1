@@ -4,9 +4,8 @@ funcione utilizando para isso interfaces
 
 ```
  public static void main(String[] args) {        
-        //complete o codigo para chamar o método calcula para a media
+        //complete o código para chamar o método calcula para a média        
         calcula(complete!);                    
-        //complete o codigo para chamar o método calcula para a mediana        
+        //complete o código para chamar o método calcula para a mediana        
         calcula(complete!);                    
-    }   
-
+    }    
