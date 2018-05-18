@@ -3,7 +3,7 @@ package exemplo.intefaces;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExemploIntefaces {
+public class Main {
     /**
      * @param args the command line arguments
      */
