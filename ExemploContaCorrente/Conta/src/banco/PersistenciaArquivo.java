@@ -17,11 +17,11 @@ public class PersistenciaArquivo {
 
         FileWriter arq;
         try {
-            arq = new FileWriter("C:\\Users\\felip_kja6gpn\\contas.txt");        
+            arq = new FileWriter("C:\\Users\\felip_kja6gpn\\contas.txt", true);        
             PrintWriter gravarArq = new PrintWriter(arq);
-            gravarArq.printf(conta.getNomeCliente() + "," +conta.getNumero()
-                + ","+ conta.getAgencia()+","+ conta.getLimite() +"," + conta.getSaldo());        
-            arq.close();                
+            gravarArq.append( conta.getNomeCliente() + "," +conta.getNumero()
+                + ","+ conta.getAgencia()+","+ conta.getLimite() +"," + conta.getSaldo()+ "\r\n");        
+            arq.close();   
         } catch (IOException ex) {
             Logger.getLogger(PersistenciaArquivo.class.getName()).log(Level.SEVERE, null, ex);
         }        
