@@ -24,6 +24,10 @@ public class Main {
         Conta contaCliente = new  Conta(numConta,nomeCliente, saldoInicial,limiteInicial,numAgencia);                        
         contaCliente.imprimirSaldo();
         
+       PersistenciaArquivo salvar = new PersistenciaArquivo();
+       salvar.salvarConta(contaCliente);
+        
+        
     }
     
 }
