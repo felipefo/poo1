@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  */
 public class PersistenciaProdutoTest {
     
-    PersistenciaProduto p;
+   PersistenciaProduto p;
     
     public PersistenciaProdutoTest() {
     }
@@ -48,6 +48,7 @@ public class PersistenciaProdutoTest {
     @Test
     public void testReadCSVFile() throws Exception {
         System.out.println("readCSVFile");
+        p = new PersistenciaProduto();
         ArrayList<Produto> produtos = (ArrayList<Produto>) p.recuperarTodos();       
         Produto produto = produtos.get(0);
         assertEquals("Hamburguer de carne de boi com tomate, alface, cream cheese, milho", produto.getDescricao());        

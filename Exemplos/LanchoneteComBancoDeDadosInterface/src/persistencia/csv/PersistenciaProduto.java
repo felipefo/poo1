@@ -28,10 +28,10 @@ public class PersistenciaProduto implements IPersistenciaProduto {
                 arrayLinhaCSV = line.split(";");//split quebra            
                 Produto produto = new Produto();
                 produto.setCodigo(Integer.parseInt(arrayLinhaCSV[0]));
-                produto.setDescricao(arrayLinhaCSV[1]);
+                produto.setDescricao(arrayLinhaCSV[1]);                
                 produto.setValor(Double.parseDouble(arrayLinhaCSV[2]));
-                produto.setMarca(arrayLinhaCSV[3]);
-                produto.setCategoria(new Categoria(arrayLinhaCSV[4]));
+               // produto.setMarca(arrayLinhaCSV[3]);
+                                
                 listaProdutos.add(produto);
             }
         } catch (FileNotFoundException e) {
@@ -53,11 +53,10 @@ public class PersistenciaProduto implements IPersistenciaProduto {
 
     public void inserir(Produto produto) throws Exception {
         try {
-            FileWriter writer = new FileWriter(".\\produto.csv", true);
-            writer.append(produto.getCodigo() + ";");
+            FileWriter writer = new FileWriter(".\\produto.csv", true);      
             writer.append(produto.getCodigo() + ";" + produto.getDescricao());
             writer.append(produto.getValor() + ";" + produto.getMarca());
-            writer.append(produto.getCategoria());
+           // writer.append(produto.getCategoria());
             writer.append(";");
             writer.append('\n');
             writer.flush();
