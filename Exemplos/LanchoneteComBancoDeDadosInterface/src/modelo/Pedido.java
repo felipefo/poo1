@@ -2,13 +2,14 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import modelo.ItemPedido;
-
 
 public class Pedido {
     
     private ArrayList<ItemPedido> itens = new ArrayList<ItemPedido>();    
     private int cod;
+    private Date dataPedido;
 
     public Pedido(int cod) {
         this.cod = cod;

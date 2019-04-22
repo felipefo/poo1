@@ -6,50 +6,33 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import modelo.Bebida;
-import modelo.Hamburguer;
+import java.util.List;
+import modelo.Categoria;
+;
 import modelo.Produto;
-import modelo.Refrigerante;
-import modelo.Suco;
 
 
-public class PersistenciaProduto {
-   
-    public static ArrayList readCSVFile() {
+
+public class PersistenciaProduto implements IPersistenciaProduto {
+
+    @Override
+    public List recuperarTodos() throws Exception {
         String csvFile = ".\\produto.csv";
         String[] arrayLinhaCSV = null;
         BufferedReader br = null;
-        String line = "";        
+        String line = "";
         ArrayList listaProdutos = new ArrayList();
         try {
-            br = new BufferedReader(new FileReader(csvFile));                        
-            while ((line = br.readLine()) != null) {                
+            br = new BufferedReader(new FileReader(csvFile));
+            while ((line = br.readLine()) != null) {
                 arrayLinhaCSV = line.split(";");//split quebra            
-                
-                if (arrayLinhaCSV[1].equalsIgnoreCase(Hamburguer.HAMBURGUER)){
-                    Hamburguer hamburguer = new Hamburguer();
-                    hamburguer.setCodigo(Integer.parseInt(arrayLinhaCSV[0]));
-                    hamburguer.setDescricao(arrayLinhaCSV[2]);
-                    hamburguer.setValor(Double.parseDouble(arrayLinhaCSV[3]));
-                    hamburguer.setTipo(arrayLinhaCSV[4]);
-                    listaProdutos.add(hamburguer);
-                } else if (arrayLinhaCSV[1].equalsIgnoreCase("Refrigerante")){
-                    Refrigerante refrigerante = new Refrigerante();
-                    refrigerante.setCodigo(Integer.parseInt(arrayLinhaCSV[0]));
-                    refrigerante.setDescricao(arrayLinhaCSV[2]);
-                    refrigerante.setValor(Double.parseDouble(arrayLinhaCSV[3]));
-                    refrigerante.setMarca(arrayLinhaCSV[4]);
-                    refrigerante.setTamanho(arrayLinhaCSV[5]);
-                    listaProdutos.add(refrigerante);
-                }else if (arrayLinhaCSV[1].equalsIgnoreCase("Suco")){
-                    Suco suco = new Suco();
-                    suco.setCodigo(Integer.parseInt(arrayLinhaCSV[0]));
-                    suco.setDescricao(arrayLinhaCSV[2]);
-                    suco.setValor(Double.parseDouble(arrayLinhaCSV[3]));
-                    suco.setSabor(arrayLinhaCSV[4]);
-                    suco.setTamanho(arrayLinhaCSV[5]);
-                    listaProdutos.add(suco);
-                }
+                Produto produto = new Produto();
+                produto.setCodigo(Integer.parseInt(arrayLinhaCSV[0]));
+                produto.setDescricao(arrayLinhaCSV[1]);
+                produto.setValor(Double.parseDouble(arrayLinhaCSV[2]));
+                produto.setMarca(arrayLinhaCSV[3]);
+                produto.setCategoria(new Categoria(arrayLinhaCSV[4]));
+                listaProdutos.add(produto);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -61,45 +44,27 @@ public class PersistenciaProduto {
                     br.close();
                 } catch (IOException e) {
                     e.printStackTrace();
+                    throw new Exception("Não foi possivel recuperar os registros.");
                 }
             }
         }
         return listaProdutos;
     }
-    public static void saveProduto(Produto produto) {
+
+    public void inserir(Produto produto) throws Exception {
         try {
             FileWriter writer = new FileWriter(".\\produto.csv", true);
-            writer.append(produto.getCodigo()+";");
-            if (produto instanceof Hamburguer){
-                writer.append(Hamburguer.HAMBURGUER +";"+ produto.getDescricao());
-                writer.append(";");
-                writer.append(produto.getValor()+";");
-                writer.append(((Hamburguer) produto).getTipo());
-            }
-            else if(produto instanceof Refrigerante){
-                writer.append("Refrigerante"+";"+ produto.getDescricao());
-                writer.append(";");
-                writer.append(produto.getValor()+";");
-                writer.append(((Refrigerante)produto).getMarca()+";");
-                writer.append(((Bebida)produto).getTamanho());
-
-            }
-            else if(produto instanceof Suco) {
-                writer.append("Suco"+";"+ produto.getDescricao());
-                writer.append(";");
-                writer.append(produto.getValor()+";");
-                writer.append(((Suco)produto).getSabor()+";");
-                writer.append(((Bebida)produto).getTamanho());
-            }
-         
+            writer.append(produto.getCodigo() + ";");
+            writer.append(produto.getCodigo() + ";" + produto.getDescricao());
+            writer.append(produto.getValor() + ";" + produto.getMarca());
+            writer.append(produto.getCategoria());
+            writer.append(";");
             writer.append('\n');
             writer.flush();
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
+            throw new Exception("Não foi possivel salvar o produto.");
         }
-        
- 
-
     }
 }

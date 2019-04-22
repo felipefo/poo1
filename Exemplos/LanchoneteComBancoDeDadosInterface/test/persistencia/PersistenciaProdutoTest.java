@@ -3,9 +3,7 @@ package persistencia;
 
 import java.io.FileReader;
 import java.util.ArrayList;
-import modelo.Hamburguer;
 import modelo.Produto;
-import modelo.Refrigerante;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,6 +17,8 @@ import static org.junit.Assert.*;
  */
 public class PersistenciaProdutoTest {
     
+    PersistenciaProduto p;
+    
     public PersistenciaProdutoTest() {
     }
     
@@ -31,29 +31,25 @@ public class PersistenciaProdutoTest {
     }
     
     @Before
-    public void setUp() {
-        Hamburguer burger1 = new Hamburguer("boi", "carne bovina, tomate, alface, cream cheese, milho", 19.50,0);
-        Refrigerante refri1 = new Refrigerante("600 ml", "", 5, "Coca Cola",1);
-        
-        
-        
-        PersistenciaProduto.saveProduto(burger1);
-        PersistenciaProduto.saveProduto(refri1);
+    public void setUp() throws Exception {
+        Produto burger1 = new Produto("Hamburguer de carne de boi com tomate, alface, cream cheese, milho", 19.50,"Fabricação");
+        Produto refri1 = new Produto("Coca-cola 600 ml",5, "Coca Cola");        
+        PersistenciaProduto p  =  new PersistenciaProduto();        
+        p.inserir(burger1);
+        p.inserir(refri1);
     }
     
     @After
     public void tearDown() {
     }
 
-    /**
-     * Test of readCSVFile method, of class PersistenciaProduto.
-     */
+
     @Test
-    public void testReadCSVFile() {
+    public void testReadCSVFile() throws Exception {
         System.out.println("readCSVFile");
-        ArrayList<Produto> produtos = PersistenciaProduto.readCSVFile();       
+        ArrayList<Produto> produtos = (ArrayList<Produto>) p.recuperarTodos();       
         Produto produto = produtos.get(0);
-        assertEquals("carne bovina, tomate, alface, cream cheese, milho", produto.getDescricao());        
+        assertEquals("Hamburguer de carne de boi com tomate, alface, cream cheese, milho", produto.getDescricao());        
         
         for (int i  = 0; i< produtos.size() ; i++){            
             if (produtos.get(i) == null){

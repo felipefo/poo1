@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package persistencia;
 
 import java.io.IOException;
 import java.util.List;
-import modelo.Hamburguer;
 import modelo.ItemPedido;
+import modelo.Produto;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,10 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author 2275103
- */
+
 public class PersistenciaItemPedidoTest {
     
     public PersistenciaItemPedidoTest() {
@@ -35,16 +28,15 @@ public class PersistenciaItemPedidoTest {
     
     @Before
     public void setUp() throws IOException {
-        Hamburguer hamb = new Hamburguer("boi", "", 5, 0);
+        Produto hamb = new Produto("Hamburguer de boi", 5, "Fabricação propria");
         ItemPedido item = new ItemPedido(0);
         item.setPreco(5);
         item.setProduto(hamb);
         item.setQuantidade(1);
         item.setAnotacao("Torrado");
         item.setCodPedido(0);
-        PersistenciaItemPedido.saveItemPedido(item);
-        
-        
+        PersistenciaItemPedido persistenciaItemPedido  = new PersistenciaItemPedido();
+        persistenciaItemPedido.inserir(item);                
     }
     
     @After
@@ -54,10 +46,9 @@ public class PersistenciaItemPedidoTest {
     @Test
     public void testreadCSVFile() throws Exception {
         System.out.println("readCSVFile");
-        List<ItemPedido> itens = PersistenciaItemPedido.readCSVFile();
-        
-        if (itens.size() == 0) fail("sem itens");
-        
+        PersistenciaItemPedido p   =  new PersistenciaItemPedido();
+        List<ItemPedido> itens = p.recuperarTodos();        
+        if (itens.size() == 0) fail("sem itens");        
         ItemPedido item = itens.get(0);
         assertEquals(0, item.getCod());
         assertEquals("Torrado", item.getAnotacao());

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package persistencia;
 
 import java.io.BufferedReader;
@@ -12,21 +8,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.Bebida;
-import modelo.Hamburguer;
-import modelo.ItemPedido;
-import modelo.Refrigerante;
-import modelo.Suco;
 import modelo.ItemPedido;
 import modelo.Produto;
 
-/**
- *
- * @author 2275103
- */
-public class PersistenciaItemPedido {
 
-    public static void saveItemPedido(ItemPedido item) throws IOException {
+public class PersistenciaItemPedido implements IPersistenciaItemPedido{
+
+    public void inserir(ItemPedido item) throws IOException {
         FileWriter writer = null;
         try {
             writer = new FileWriter(".\\itempedido.csv", true);
@@ -46,14 +34,15 @@ public class PersistenciaItemPedido {
         }
     }
 
-    public static ArrayList<ItemPedido> readCSVFile() throws FileNotFoundException {
+    public ArrayList<ItemPedido> recuperarTodos() throws FileNotFoundException, Exception {
         String csvFile = ".\\itempedido.csv";
         String[] arrayLinhaCSV = null;
         BufferedReader br = null;
         String line = "";
         ArrayList<ItemPedido> listaItemPedidos = new ArrayList();
 
-        List<Produto> produtos = PersistenciaProduto.readCSVFile();
+        PersistenciaProduto persistenciaProduto = new PersistenciaProduto();        
+        List<Produto> produtos = persistenciaProduto.recuperarTodos();
         try {
             br = new BufferedReader(new FileReader(csvFile));
             while ((line = br.readLine()) != null) {
@@ -70,8 +59,6 @@ public class PersistenciaItemPedido {
                         break;
                     }
                 }
-
-                
                 item.setPreco(Double.parseDouble(arrayLinhaCSV[3]));
                 item.setProduto(produto);
                 item.setQuantidade(Integer.parseInt(arrayLinhaCSV[2]));
@@ -88,7 +75,7 @@ public class PersistenciaItemPedido {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    e.printStackTrace();                   
                 }
             }
 
