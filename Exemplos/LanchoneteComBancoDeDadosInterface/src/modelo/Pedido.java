@@ -26,10 +26,10 @@ public class Pedido {
         } 
     }
     
-    public double totalProdutos(){
+    public double valorTotal(){
         double total = 0.0;
         for(int index=0; itens.size() > index; index++){            
-            total += itens.get(index).getPreco()* itens.get(index).getQuantidade();                        
+            total += ((ItemPedido)itens.get(index)).valorTotalItem();
         } 
         return total;
     }

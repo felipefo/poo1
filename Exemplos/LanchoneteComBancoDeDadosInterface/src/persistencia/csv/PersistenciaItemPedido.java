@@ -1,5 +1,5 @@
 
-package persistencia;
+package persistencia.csv;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.ItemPedido;
 import modelo.Produto;
+import persistencia.IPersistenciaItemPedido;
 
 
 public class PersistenciaItemPedido implements IPersistenciaItemPedido{

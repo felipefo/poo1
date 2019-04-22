@@ -1,6 +1,7 @@
 
 package persistencia;
 
+import persistencia.csv.PersistenciaItemPedido;
 import java.io.IOException;
 import java.util.List;
 import modelo.ItemPedido;
@@ -28,9 +29,9 @@ public class PersistenciaItemPedidoTest {
     
     @Before
     public void setUp() throws IOException {
-        Produto hamb = new Produto("Hamburguer de boi", 5, "Fabricação propria");
+        Produto hamb = new Produto("Hamburguer de boi", 5, "Fabricação própria");
         ItemPedido item = new ItemPedido(0);
-        item.setPreco(5);
+        item.setPreco(hamb.getValor());
         item.setProduto(hamb);
         item.setQuantidade(1);
         item.setAnotacao("Torrado");

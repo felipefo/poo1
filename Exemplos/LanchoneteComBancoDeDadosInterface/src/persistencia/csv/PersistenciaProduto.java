@@ -1,4 +1,4 @@
-package persistencia;
+package persistencia.csv;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import java.util.List;
 import modelo.Categoria;
 ;
 import modelo.Produto;
-
+import persistencia.IPersistenciaProduto;
 
 
 public class PersistenciaProduto implements IPersistenciaProduto {

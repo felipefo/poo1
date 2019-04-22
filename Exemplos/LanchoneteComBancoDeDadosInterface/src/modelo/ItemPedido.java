@@ -64,6 +64,11 @@ public class ItemPedido {
     public void setCodPedido(int codPedido) {
         this.codPedido = codPedido;
     }
-
+    
+    public double valorTotalItem(){
+        return this.getPreco()*this.getQuantidade();        
+    }
+    
+    
     
 }

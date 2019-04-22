@@ -1,6 +1,7 @@
 
 package persistencia;
 
+import persistencia.csv.PersistenciaProduto;
 import java.io.FileReader;
 import java.util.ArrayList;
 import modelo.Produto;
@@ -32,8 +33,8 @@ public class PersistenciaProdutoTest {
     
     @Before
     public void setUp() throws Exception {
-        Produto burger1 = new Produto("Hamburguer de carne de boi com tomate, alface, cream cheese, milho", 19.50,"Fabricação");
-        Produto refri1 = new Produto("Coca-cola 600 ml",5, "Coca Cola");        
+        Produto produto1 = new Produto("Hamburguer de carne de boi com tomate, alface, cream cheese, milho", 10.50,"Fabricação Própria");
+        Produto produto2 = new Produto("Refrigerante coca-cola 600 ml",5, "Coca Cola");        
         PersistenciaProduto p  =  new PersistenciaProduto();        
         p.inserir(burger1);
         p.inserir(refri1);
