@@ -36,8 +36,8 @@ public class PersistenciaProdutoTest {
         Produto produto1 = new Produto("Hamburguer de carne de boi com tomate, alface, cream cheese, milho", 10.50,"Fabricação Própria");
         Produto produto2 = new Produto("Refrigerante coca-cola 600 ml",5, "Coca Cola");        
         PersistenciaProduto p  =  new PersistenciaProduto();        
-        p.inserir(burger1);
-        p.inserir(refri1);
+        p.inserir(produto1);
+        p.inserir(produto2);
     }
     
     @After
