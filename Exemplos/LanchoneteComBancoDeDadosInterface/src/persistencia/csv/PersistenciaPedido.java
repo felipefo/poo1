@@ -14,16 +14,7 @@ import persistencia.IPersistenciaPedido;
 
 public class PersistenciaPedido implements IPersistenciaPedido {
 
-    public void inserir(Pedido pedido) {
-        try {
-            FileWriter writer = new FileWriter(".\\pedido.csv", true);
-            writer.append(pedido.getCod() + "\n");
-            writer.flush();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+  
 
     @Override
     public List<Pedido> recuperarTodos() throws IOException, Exception {
@@ -59,4 +50,18 @@ public class PersistenciaPedido implements IPersistenciaPedido {
         }
         return pedidos;
     }
+    
+      public void inserir(Pedido pedido) {
+        try {
+            FileWriter writer = new FileWriter(".\\pedido.csv", true);
+            writer.append(pedido.getCod() + "\n");
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
 }

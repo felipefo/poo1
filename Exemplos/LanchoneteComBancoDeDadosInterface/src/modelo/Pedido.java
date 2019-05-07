@@ -9,10 +9,14 @@ public class Pedido {
     
     private ArrayList<ItemPedido> itens = new ArrayList<ItemPedido>();    
     private int cod;
-    private Date dataPedido;
+    private Date dataCriacao;
 
     public Pedido(int cod) {
         this.cod = cod;
+    }
+
+    public Pedido() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void adicionarItem(ItemPedido itemPedido){
@@ -24,6 +28,10 @@ public class Pedido {
             System.out.println("Descricao:" + itens.get(index).getProduto().getDescricao());
             System.out.println("Valor:"  + itens.get(index).getPreco());
         } 
+    }
+    
+    public Date getData(){
+        return this.dataCriacao;
     }
     
     public double valorTotal(){
@@ -42,6 +50,13 @@ public class Pedido {
         return cod;
     }
     
+     public void setCodigo(int  codigo) {
+        this.cod = codigo;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
     
     
 }

@@ -1,9 +1,3 @@
-/*
-   Comentarios.
-
-
-*/
-
 
 
 package persistencia.jdbc;
@@ -14,32 +8,30 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Pedido;
 import modelo.Produto;
-import persistencia.IPersistenciaProduto;
+import persistencia.IPersistenciaPedido;
 
-public class PersistenciaProduto extends PersistenciaBD implements IPersistenciaProduto {
+public class PersistenciaPedido extends PersistenciaBD implements IPersistenciaPedido {
 
     public void criaTabela() {
 
-        String sqlProduto = "CREATE TABLE produto "
-                + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "descricao CHAR(40) NOT NULL,"
-                + "marca CHAR(40) NOT NULL,"
-                + "valor NUMERIC  NOT NULL"
-                + " )";
-        this.executaSQL(sqlProduto);
+        String sqlPedido = "CREATE TABLE pedido "
+                + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "                
+                + "DATA TEXT NOT NULL )";
+        this.executaSQL(sqlPedido);
     }
+
     /**
      *
      * @param produto
      * Esse método insere um produto na minha base de dados.
      */
     @Override
-    public void inserir(Produto produto) {
+    public void inserir(Pedido pedido) {
 
-        String sql = "INSERT INTO PRODUTO (descricao, valor , tipo) "
-                + "values('" + produto.getDescricao()
-                + "'," + produto.getValor()
+        String sql = "INSERT INTO PEDIDO (ID, DATA) "
+                + "values('" + pedido.getCod() + "'," + pedido.getData()
                 + "')";
         this.executaSQL(sql);
     }
@@ -48,9 +40,9 @@ public class PersistenciaProduto extends PersistenciaBD implements IPersistencia
         Esse método executa uma chamada sql no banco de dados.
      */
     @Override
-    public List<Produto> recuperarTodos() {
-        ArrayList<Produto> lista = new ArrayList<Produto>();
-        String sql = "SELECT * FROM PRODUTO";
+    public List<Pedido> recuperarTodos() {
+        ArrayList<Pedido> lista = new ArrayList<>();
+        String sql = "SELECT * FROM PEDIDO";
         ResultSet rs = null;
         Connection c = null;
         Statement stmt = null;
@@ -65,11 +57,8 @@ public class PersistenciaProduto extends PersistenciaBD implements IPersistencia
             //executa o sql query                         
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
-       
-                Produto p = new Produto();
+                Pedido p = new Pedido();
                 p.setCodigo(rs.getInt("id"));
-                p.setDescricao(rs.getString("descricao"));
-                p.setValor(rs.getDouble("valor"));
                 lista.add(p);
             }
             rs.close();
